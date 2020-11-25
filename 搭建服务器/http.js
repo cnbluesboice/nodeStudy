@@ -1,0 +1,14 @@
+const http = require("http");  // 为内置模块，不需要安装
+// 创建server服务器对象
+const server = http.createServer();
+// 监听当前服务器对象的请求
+server.on("request", (req, res)=>{
+    console.log(req);
+    // 当服务器被请求时，会触发请求事件，并传入请求对象和响应对象
+    res.end("hello world!");
+});
+
+// 服务器监听的端口号, 可以访问    http://192.168.50.17:3000/    网址
+server.listen(3000, function(){
+    console.log("监听端口号, 服务器启动成功！");
+})
