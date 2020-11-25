@@ -41,15 +41,3 @@ rs.on("close", () => {
 })
 
 rs.pipe(ws);   // 管道pipe，将读取流rs插入到写入流ws中，可以实现ws.write， ws.open等等相同的效果
-
-// promise需要实现的功能
-const p1 = new Promise(fn);
-p1.then((res)=>{
-    document.body.style.background = "green";
-    console.log("成功", res);
-})
-
-p1.catch((err)=>{
-    document.body.style.background = "pink";
-    console.log("失败", err);
-})
