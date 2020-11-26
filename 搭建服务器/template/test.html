@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>名字：{{name}}</h3>
+    <p>简介：{{value}}</p>
+
+    <ul>
+        {%for {list} %}
+        <li>{{item}}</li>
+        {%endfor%}
+    </ul>
+    <ul>
+        {%for {{stars}} %}
+        <li>
+            <span>{{item.name}}</span>
+            <span>{{item.gender}}</span>
+        </li>
+        {%endfor%}
+    </ul>
+</body>
+
+</html>
