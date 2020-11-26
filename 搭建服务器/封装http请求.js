@@ -61,17 +61,14 @@ function render(options, path) {
       const starReg = /\{%for \{\{(.*?)\}\} %\}(.*?)\{%endfor%\}/igs;
       let starResult;
       while (starResult = starReg.exec(data)) {
-        console.log(starResult, 'starResult');
         const starKey = starResult[1].trim();
         const starArr = options[starKey];
+        let starStr = "";
         starArr.forEach((star, index) => {
-          const itemReg = /<span>\{\{(.*?)\}\}<\/span>/igs
-          let itemResult;
-          while (itemResult = itemReg.exec(starResult[2])) {
-            console.log(itemResult, 'itemResult');
-          }
-            // console.log(star);
-          })
+          starStr += replaceVar(starResult[2], { item: star });
+        })
+        data = data.replace(starResult[0], starStr);
+        data = replaceVar(data, options);
       }
       // 匹配循环的变量并替换循环的内容
       const listReg = /\{%for \{(.*?)\} %\}(.*?)\{%endfor%\}/igs;
@@ -100,7 +97,9 @@ function replaceVar(data, options) {
   let result;
   while (result = reg.exec(data)) { // 正则需要循环匹配
     let strKey = result[1].trim();
-    const keyValue = options[strKey];
+    // console.log(strKey, 'strKey');
+    // console.log(options, 'options');
+    const keyValue = eval("options."+strKey);
     data = data.replace(result[0], keyValue);
   }
   return data;
