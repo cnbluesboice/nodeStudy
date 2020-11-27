@@ -1,0 +1,23 @@
+{
+  "name": "nodefsmodule",
+  "version": "1.0.0",
+  "description": "chenling test npm package upload",
+  "main": "npmPackage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cnbluesboice/nodeStudy.git"
+  },
+  "keywords": [
+    "node",
+    "fs"
+  ],
+  "author": "cnbluesboice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cnbluesboice/nodeStudy/issues"
+  },
+  "homepage": "https://github.com/cnbluesboice/nodeStudy#readme"
+}
