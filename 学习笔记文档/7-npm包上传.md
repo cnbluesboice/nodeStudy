@@ -53,4 +53,11 @@
    // 发布npm包
    npm publish
    ```
+6. 验证成功后发布包
+
+   ```
+   npm publish
+   ```
+
+   
 
