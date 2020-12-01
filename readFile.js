@@ -59,4 +59,16 @@ function writeFile(path, content) {
     })
 }
 
+fs.open("./readDir.js", "r", (err, fd) => {
+    if (err) throw err;
+    console.log(fd, "fd");
+    fs.fstat(fd, (err, stat) => {
+        if (err) throw err;
+        console.log(stat, "stat");
+        fs.close(fd, (err) => {
+            if (err) throw err;
+        })
+    })
+})
+
 module.exports = { readFile, writeFile }

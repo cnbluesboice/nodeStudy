@@ -1,23 +1,16 @@
 {
-  "name": "nodefsmodule",
+  "name": "chenlingnodefspromise",
   "version": "1.0.0",
-  "description": "chenling test npm package upload",
-  "main": "npmPackage.js",
+  "description": "node fs文件模块promise封装",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cnbluesboice/nodeStudy.git"
-  },
   "keywords": [
     "node",
-    "fs"
+    "fs",
+    "promise"
   ],
-  "author": "cnbluesboice",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cnbluesboice/nodeStudy/issues"
-  },
-  "homepage": "https://github.com/cnbluesboice/nodeStudy#readme"
+  "author": "chenling",
+  "license": "ISC"
 }
