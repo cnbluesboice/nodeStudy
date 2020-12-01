@@ -1,3 +1,8 @@
+## 爬取sobooks书籍数据存入数据库
+
+代码如下
+
+```
 const mysql = require("mysql");
 const cheerio = require("cheerio");
 const axios = require("axios");
@@ -54,3 +59,5 @@ for (let i = 2; i <= totalNum; i++) {
     let page = 2;
     getPageUrl(page)
 }
+```
+

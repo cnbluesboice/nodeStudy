@@ -41,7 +41,7 @@ connect.connect((err) => {
 //     }
 // })
 
-// 删除数据库
+// // 删除数据库
 // const deleteBaseSql = "drop database userBase";
 // connect.query(deleteBaseSql, (err, result)=>{
 //     if(err){
