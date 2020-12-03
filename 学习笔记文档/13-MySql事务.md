@@ -37,6 +37,18 @@
   回滚：rollback;
   ```
 
-  
++ 事务使用场景
 
-+ 
+  ```
+  // 要插入一条完整的书籍信息；必须完整的将四个表的数据插入，因为如果一条数据没有插入成功，就会导致数据出现问题
+  begin;       // 开始事务
+  insert into booktable (bookname,authorid,catagoryid,pubcompanyid)
+  values ("鬼吹灯",4,4,4)
+  insert into authortable values (4,"天下霸唱")
+  insert into catagory values (4,"盗墓小说","盗墓",0)
+  insert into pubcompany values (4,"盗墓出版社","出版社信息")
+  commit;     // 提交事务，begin开始事务后，必须要提交才能插入成功，而且插入语句不能出错，只				  有全部正确之后才能提交成功
+  rollback;   // 数据操作回滚，之前commit提交的事务操作会失效
+  ```
+
+  
