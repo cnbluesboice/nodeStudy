@@ -8,10 +8,15 @@
 </head>
 
 <body>
-    <h1>明星列表</h1>
+    <h1>书籍列表</h1>
     <ul>
-        <%for(let i=0; i<arr.length; i++){%>
-            <li><%=arr[i]%></li>
+        <%for(let i=0; i<bookcatagory.length; i++){%>
+        <li>
+            <span>分类：<%=bookcatagory[i].catagory%></span><br />
+            <span>书名：<%=bookcatagory[i].bookname%></span><br />
+            <span>作者：<%=bookcatagory[i].author%></span><br />
+            <span>发布时间：<%=bookcatagory[i].publictime%></span><br />
+        </li>
         <%}%>
     </ul>
 </body>
