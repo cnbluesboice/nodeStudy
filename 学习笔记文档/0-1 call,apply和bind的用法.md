@@ -38,7 +38,7 @@ for(let i=0; i<arr.length; i++){
 }
 ```
 
-- 使用call方法调用函数，并制定上下文的this
+- 使用call方法调用函数，并指定上下文的this
 
 ```
 function print(){
@@ -107,5 +107,75 @@ function minOfArray(arr){
 	return min;
 }
 minOfArray([2,34,54,654,32,435,56,767,876,34,23,43,5,456,56,32,3])
+```
+
++ 使用apply来链接构造器 
+
+```
+Function.prototype.construct = function(args){
+	const newObj = Object.create(this.prototype);
+	this.apply(newObj, args);
+	return newObj;
+}
+
+// 使用闭包
+Function.prototype.construct = function(args){
+	const newConstruct = ()=>{
+		this.apply(this, args);
+	}
+	newConstruct.prototype = this.prototype;
+	return new newConstruct();
+}
+```
+
+#### 3：bind
+
++ bind()方法创建一个新的函数，在bind被调用时，新函数的this被指定为bind传入的第一个参数，其他参数将作为新函数的参数供新函数使用；
++ 在调用对象中的方法时，可能会丢失原来的对象
+
+```
+const name = "chenling"
+const obj = {
+	name: "陈玲",
+	fun: ()=>{
+		console.log(this.name);
+	}
+}
+obj.fun();    // 输出 "陈玲"
+const aaa = obj.fun;
+aaa();       // 输出 "chenling"，因为该方法是在全局作用域中调用的；
+const bbb = obj.fun.bind(obj);  // 让bbb方法中的this始终指向obj对象
+bbb();       // 输出 "陈玲"
+```
+
++ 使用bind()方法绑定的函数，在绑定时，写在this后面，可以让绑定函数拥有预设值，与ES6中的参数默认值功能相同
+
+```
+function test(a, b){
+	console.log(a + b);
+}
+const ccc = test.bind(null, 2, 3)
+ccc();
+const ddd = test.bind(null, 2)
+ddd(5,7);   // 此时得到的结果为 2+5=7，  第二个参数7会被忽略，因为在bind的时候已经指定了test函数的第一个默认参数，在调用的时候5为test函数的第二个默认参数
+```
+
++ bind可以配合setTimeout使用，在setTimeout函数中，this指向window
+
+```
+function Test(){
+	this.name = "chenling";
+}
+
+Test.prototype.declare = function(){
+	console.log("my name is" + this.name);
+}
+
+Test.prototype.print =function(){
+	setTimeout( this.declare.bind(this), 1000);
+	// 此时this.declare的this指向Test构造函数，但是在declare函数体中的this指向window，所以加上.bind(this)之后，改变setTimeout函数中的this指向
+}
+const testObj = new Test();
+testObj.print();
 ```
 
