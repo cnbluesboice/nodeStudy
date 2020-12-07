@@ -12,8 +12,18 @@ app.set("view engine", "ejs");
 // 解析post 提交的数据
 app.use(express.urlencoded({extended: true}));
 
-// 设置静态文件目录
+// 设置静态文件目录，如果是静态文件，则直接返回静态内容
 app.use(express.static(path.join(__dirname, "public")));
+
+// 添加中间件，一般用于处理请求和响应
+app.use(function(req, res, next){
+  // 在得到响应后，可以执行此方法
+  res.countNum = (a, b)=>{
+    return a + b;
+  }
+  console.log("这里定义中间件函数，访问任何页面，此函数都会被调用");
+  next();  // 这里必须调用next函数，否则请求走到这里就会终止，不会往下走
+})
 
 
 app.get("/", async (req, res) => {
