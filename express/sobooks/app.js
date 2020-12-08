@@ -3,6 +3,14 @@ const app = express();
 const path = require("path");
 const url = require("url");
 
+const api = require("./routes/api");
+app.use((req, res, next) => {
+  res.append("Access-Control-Allow-Origin", "*")
+  res.append("Access-Control-Allow-Content-Type", "*");
+  next();
+})
+app.use("/api", api);
+
 const mysql = require("./clSqlQuery");
 
 // 设置引擎
@@ -10,15 +18,15 @@ app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs");
 
 // 解析post 提交的数据
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // 设置静态文件目录，如果是静态文件，则直接返回静态内容
 app.use(express.static(path.join(__dirname, "public")));
 
 // 添加中间件，一般用于处理请求和响应
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
   // 在得到响应后，可以执行此方法
-  res.countNum = (a, b)=>{
+  res.countNum = (a, b) => {
     return a + b;
   }
   console.log("这里定义中间件函数，访问任何页面，此函数都会被调用");
@@ -55,7 +63,7 @@ app.get("/bookcatagory", async (req, res) => {
   // const options = { arr }
   // res.render("list.ejs", options);
 
- 
+
 })
 app.get("/search", (req, res) => {
   // console.log(req.url, "req.url");
@@ -83,6 +91,7 @@ app.post("/search1", (req, res) => {
 app.get("/book/:bookid", (req, res) => {
 
 })
+
 
 
 module.exports = app;
