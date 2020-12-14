@@ -74,6 +74,15 @@ print.call();
 // 此时输出my name is undefined; my age is undefined;
 ```
 
++ 检测数据类型（任何数据类型都可以）
+
+```
+Object.prototype.toString.call("").slice(8, -1)   // "string"
+Object.prototype.toString.call(true).slice(8, -1) // "Boolean"
+```
+
+
+
 #### 2：apply
 
 - 接收两个参数，第一个参数为替换被调用函数中的this对象，第二个参数为传入调用函数的参数列表
