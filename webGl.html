@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="webGL"></canvas>
+</body>
+<script>
+    const canvas = document.getElementById("webGL");
+    const gl = canvas.getContext("webgl");
+    gl.canvas;
+
+    gl.activeTexture(111)
+    // console.log(canvas, "canvas");
+    console.log(gl, "gl");
+    // console.log(gl.canvas, "gl.canvas");
+    // console.log(gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS, "gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS");
+
+
+    // const offscreen = new OffscreenCanvas(256, 256);
+    // const glTest = offscreen.getContext("webgl");
+    // glTest.canvas; // OffscreenCanvas
+    // console.log(glTest.canvas, "glTest.canvas");
+</script>
+
+</html>
