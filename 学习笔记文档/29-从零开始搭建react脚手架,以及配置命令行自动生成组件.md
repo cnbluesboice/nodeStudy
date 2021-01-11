@@ -60,7 +60,28 @@ npm init
 
 8. 在src目录下创建config文件夹,用来存放webpack的配置文件,以及生成组件CLI的配置文件
 
-![image-20210108181345129](C:\Users\87643\AppData\Roaming\Typora\typora-user-images\image-20210108181345129.png)
+   ```
+   >react-cli-test
+     >config							// 配置文件夾
+     >node-modules						// npm包
+     >public							// 项目入口index.html文件所在文件夾
+     >src								// 主要代码存放在src
+       >businessComponent				// 业务组件
+       >component						// 基本组件
+       >template						// 自动生成组件的模板文件存放在此处
+       >view							// 页面视图组件代码
+       >app.js							// 项目根组件
+       >app.less						// 项目根组件的样式
+       >index.js						// 项目入口JS文件
+     >.babelrc							// babel配置文件
+     >.gitignore						// git上传时忽略某些文件
+     >package-lock.json
+     >package.json
+     >README.md
+    
+   ```
+
+   
 
 #### 3--配置webpack
 
@@ -282,7 +303,23 @@ module.exports = webpackMerge.merge(baseWebpackConfig, {
 
 1. 在config目录下创建autoCli文件夹，并在当前文件夹下执行 npm init，创建package.json文件，在package.json文件中做如下配置
 
-   ![image-20210111095014597](C:\Users\87643\AppData\Roaming\Typora\typora-user-images\image-20210111095014597.png)
+   ```
+   {
+     "name": "autocli",
+     "version": "1.0.0",
+     "description": "",
+     "main": "index.js",
+     "scripts": {
+       "test": "echo \"Error: no test specified\" && exit 1"
+     },
+     "bin": {
+       "build-component": "index.js"    // 配置bin参数
+     },
+     "author": "cnbluesboice",
+     "license": "ISC"
+   }
+   
+   ```
 
 2. 在autoCli文件夹下面创建bin文件夹，在bin文件夹下面创建index.js文件，index文件的代码如下
 
@@ -353,7 +390,14 @@ module.exports = webpackMerge.merge(baseWebpackConfig, {
 
 4. 以上都配置好后，在项目根目录下的package.json 文件中做如下配置:
 
-   ![image-20210111095135333](C:\Users\87643\AppData\Roaming\Typora\typora-user-images\image-20210111095135333.png)
+   ```
+   "scripts": {
+       "test": "echo \"Error: no test specified\" && exit 1",
+       "start": "webpack-dev-server --inline --progress --config config/webpack.dev.config.js",
+       "build": "webpack --config config/webpack.prod.config.js",
+       "buildDir": "build-component"  // 配置此处script,使用npm命令
+     },
+   ```
 
    
 

@@ -3,9 +3,12 @@
 1. 官网下载MYSQL数据库，需要注册Oracle账号，安装时需要注意选择如下认证方式
 
    + MySQL下载链接地址：https://dev.mysql.com/downloads/
+
    + 选择MySql Community Server，下载想要的版本（注意安装：server-only）
 
-   ![image-20201130105039284](C:\Users\87643\AppData\Roaming\Typora\typora-user-images\image-20201130105039284.png)
+     在弹出框选择：Use Legacy Authentication Method (Retain MySql 5.x Compatibility)
+
+     
 
 2. 安装完成后在所有程序中找到 Mysql Command Line Client，验证数据库是否存在
 
@@ -16,7 +19,18 @@
 
    出现如下图所示，即为数据库连接安装建立成功
 
-   ![image-20201130111628567](C:\Users\87643\AppData\Roaming\Typora\typora-user-images\image-20201130111628567.png)
+   ```
+   +-----------------------+
+   | Database				|
+   +-----------------------+
+   |information_schema     |
+   |mysql					|
+   |performance_schema     |
+   |sahila					|
+   |sys					|
+   |world					|
+   +-----------------------|
+   ```
 
 3. 安装Navicat数据库可视化工具
 
