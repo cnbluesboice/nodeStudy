@@ -412,7 +412,7 @@ module.exports = webpackMerge.merge(baseWebpackConfig, {
 6. 在项目本目录下开启终端，输入如下命令行自动生成组件：
 
    ```
-   npm run buildDir -d=component/test3333 -f=index 
-   // 其中-d表示组件文件夹路径（component需要手动创建，test3333是存放组件代码的文件夹），-f表示组件代码的JS 和样式代码文件名
+   npm run buildDir -d=component/testAutoName -f=index -n=TestAutoName
+   // 其中-d表示组件文件夹路径（component需要手动创建，也可以是其他文件夹，如：businessComponent，testAutoName是存放组件代码的文件夹），-f表示组件代码的JS 和样式代码文件名, -表示class创建的组件名称
    ```
 
