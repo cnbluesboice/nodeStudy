@@ -57,7 +57,7 @@ set DEBUG=myapp:* & npm start
 在mac和linux下使用以下命令开启express项目
 
 ```
-DEBUG=myapp:* npm star
+DEBUG=myapp:* npm start
 ```
 
 + 方式二：使用express命令行快速创建项目

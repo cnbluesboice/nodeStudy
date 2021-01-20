@@ -7,8 +7,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const cookieRouter = require("./routes/cryptoCookie");
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const mallRouter = require("./routes/mall");
 
 var app = express();

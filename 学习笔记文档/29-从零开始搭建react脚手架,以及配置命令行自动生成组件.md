@@ -416,3 +416,78 @@ module.exports = webpackMerge.merge(baseWebpackConfig, {
    // 其中-d表示组件文件夹路径（component需要手动创建，也可以是其他文件夹，如：businessComponent，testAutoName是存放组件代码的文件夹），-f表示组件代码的JS 和样式代码文件名, -表示class创建的组件名称
    ```
 
+
+
+#### 5：配置eslint代码规范校验
+
+1. 安装eslint
+
+   ```
+   npm install eslint -S
+   ```
+
+   
+
+2. 初始化配置文件
+
+   ```
+   npx eslint --init
+   // 选择如下：
+   // How would you like to use ESLint? ---> To check syntax, find problems, and enforce code style
+   
+   // What type of modules does your project use? ---> Javascript modules(import/export)
+   // Which framework does your project use? ---> React
+   // Does your project use Typescript? ---> No
+   // Where does your code run? ---> Browser, Node
+   // How would you like to define a style for your project? ---> Use a popular style guide
+   
+   // Which style guide do you want to follow? ---> Airbnb:https://github.com/airbnb/javascript 
+   // 选择Airbnb会自动安装react相关的插件，包含eslint-plugin-react-hooks。
+   // What format you want your config file to be in? ---> Javascript
+   ```
+
+   
+
+3. 在VSCode的Extensions中安装Eslint
+
+4. .eslintrc.js配置代码
+
+   ```
+   module.exports = {
+     env: {
+       browser: true,
+       es2021: true,
+       node: true,
+     },
+     parser: 'babel-eslint', // babel-eslint包 此配置加上后在js文件中使用装饰器写法就不会报错了，例如： @connect
+     extends: [
+       'plugin:react/recommended',
+       'airbnb',
+     ],
+     parserOptions: {
+       ecmaFeatures: {
+         jsx: true,
+       },
+       ecmaVersion: 12,
+       sourceType: 'module',
+     },
+     plugins: [
+       'react',
+     ],
+     rules: {
+       'linebreak-style': [0, 'error', 'windows'], // 兼容开发环境不同时的回车键校验
+       'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }], // 让eslint校验时，不区分js和jsx文件
+     },
+   };
+   
+   ```
+
+   
+
+5. 在.babelrc文件中的plugins中添加
+
+   ```
+   ["@babel/plugin-proposal-decorators", { "legacy": true }],
+   ```
+
+   
