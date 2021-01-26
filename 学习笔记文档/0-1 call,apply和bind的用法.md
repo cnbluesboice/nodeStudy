@@ -118,7 +118,7 @@ function minOfArray(arr){
 minOfArray([2,34,54,654,32,435,56,767,876,34,23,43,5,456,56,32,3])
 ```
 
-+ 使用apply来链接构造器 
++ 使用apply来链接构造器(可以给全局构造器绑定一些方法和属性，供全局使用，但无法与一些内置对象一起使用，如Date)
 
 ```
 Function.prototype.construct = function(args){
@@ -128,12 +128,13 @@ Function.prototype.construct = function(args){
 }
 
 // 使用闭包
-Function.prototype.construct = function(args){
-	const newConstruct = ()=>{
-		this.apply(this, args);
+Function.prototype.constructor=function(args){
+	const that = this;
+	const newConstructor=function(){
+		that.apply(this, args);
 	}
-	newConstruct.prototype = this.prototype;
-	return new newConstruct();
+	newConstructor.prototype = this.prototype
+	return new newConstructor();
 }
 ```
 
