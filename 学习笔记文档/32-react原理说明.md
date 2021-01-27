@@ -106,3 +106,21 @@ react为自己实现了一套合成系统，减少内存消耗，简化了事件
 
 
 react合成事件系统模拟事件冒泡的方法是构建一个自己及父组件的队列，所以因此也带来了一个问题，合成事件不能阻止原生事件，原生事件可以阻止合成事件，用event.stopPropagation()并不能停止事件传播，应该使用event.preventDefault()
+
+#### 6：react性能优化
+
+react中性能的消耗主要耗费在update阶段的diff算法，因此性能的优化主要针对diff算法
+
+1. ##### 减少diff算法的触发次数
+
+   减少diff算法的触发次数实际上就是减少update流程的次数，正常进入update流程有3种方式
+
+   + setState：只将与UI变化有关的数据放在state中，其他与UI无关但是多个函数需要用到的数据直接绑定在this上
+   + 父组件的render：组件尽量解耦，并使用PureComponent纯组件，PureComponent会自动触发shouldComponentUpdate钩子对比数据是否发生变化，从而决定是否更新组件
+   + forceUpdate方法的调用：forceUpdate方法调用后会直接进入componentWillUpdate阶段，无法拦截，应该弃用
+
+2. ##### 正确使用diff算法
+
+   + 对于条件渲染多个节点时，尽量使用隐藏的方式显示，不要替换节点
+
+   + 尽量少的操作节点
